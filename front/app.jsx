@@ -2,19 +2,18 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import Navbar from './Navbar'
-import WelcomePage from './WelcomePage'
-import Artists from './Artists'
-import Songs from './Songs'
-import NewSongs from './NewSongs'
-import Playlists from './Playlists'
-import NewPlaylist from './NewPlaylist'
-import Playlist from './Playlist'
-import AddSongToPlaylist from './AddSongToPlaylist'
+import WelcomePage from './WelcomePage';
+import Persons from './Persons';
+import UpdateOnePerson from './UpdateOnePerson';
+import DeletePerson from './DeletePerson';
+import SuccessfullyUpdated from './SuccessfullyUpdated';
+import CreatePerson from './CreatePerson';
 
 const App = React.createClass({
 	render(){
 		return(
 			<div>
+      <h1>spotify-challenge</h1>
 			<Navbar />
 			{this.props.children}
 			</div>
@@ -26,13 +25,12 @@ ReactDom.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={WelcomePage} />
-      <Route path="artists" component={Artists} />
-      <Route path="songs" component={Songs} />
-      <Route path="/songs/newsong" component={NewSongs} />
-      <Route path="/playlists" component={Playlists} />
-      <Route path="/playlists/newPlaylist" component={NewPlaylist} />
-      <Route path="/playlists/:playlistId" component={Playlist} />
-      <Route path="/playlists/:playlistId/songs" component={AddSongToPlaylist} />
+      <Route path="people" component={Persons} /> 
+      <Route path="update-info/:personId" component={UpdateOnePerson} /> 
+      <Route path="delete-user/:personId" component={DeletePerson} /> 
+      <Route path="successfuly-updated/:personId" component={SuccessfullyUpdated} /> 
+
+      <Route path="add-new-person" component={CreatePerson} /> 
     </Route>
   </Router>,
 	document.getElementById('app')
